@@ -1,6 +1,7 @@
 package com.xuanwu.apaas.ormlib.core;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.xuanwu.apaas.ormlib.annotation.SqliteAnnotationCache;
 
@@ -34,6 +35,10 @@ public class SqliteOrmLite {
 
     public void init(Context applicationContext){
         this.applicationContext = applicationContext;
+    }
+
+    public static void migrate(SQLiteDatabase database, Class<? extends SqliteOrmRepository<?>>... daoClasses) {
+        SqliteOrmLiteUpgrader.migrate(database,daoClasses);
     }
 
     public static void onDestory(){

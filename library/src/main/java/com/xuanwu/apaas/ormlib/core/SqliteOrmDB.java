@@ -31,7 +31,7 @@ public class SqliteOrmDB extends SQLiteOpenHelper {
 	@SuppressLint("NewApi")
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+		SqliteOrmLiteUpgrader.migrate(db);
 	}
 
 	/**

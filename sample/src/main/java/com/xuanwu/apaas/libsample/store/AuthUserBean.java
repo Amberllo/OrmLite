@@ -13,7 +13,7 @@ public class AuthUserBean extends SqliteOrmBean{
     @DatabaseField(primaryKey = true,Type = DatabaseField.FieldType.VARCHAR)
     private String uid;
 
-    @DatabaseField(primaryKey = true,Type = DatabaseField.FieldType.VARCHAR)
+    @DatabaseField(Type = DatabaseField.FieldType.VARCHAR)
     private String name;
 
 
