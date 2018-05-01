@@ -1,0 +1,92 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+
+android {
+
+    def config = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    configurations.all {
+        // Check for updates every build
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    testImplementation 'junit:junit:4.12'
+
+//    compile project(':xtion-lib-jsonpersistent')
+//    compile project(':xtion-lib-ormlite')
+//    compile project(':xtion-lib-sendqueue')
+//    compile project(':xtion-lib-zipkintrace')
+
+
+    def config = rootProject.extensions.getByName("ext")
+    def version = config.mavenVersion
+
+    compile ('com.xuanwu.apaas.lib:ormlite:'+version){
+        changing true
+    }
+    compile ('com.xuanwu.apaas.lib:jsonpersistent:'+version){
+        changing true
+    }
+    compile ('com.xuanwu.apaas.lib:sendqueue:'+version){
+        changing true
+    }
+    compile ('com.xuanwu.apaas.lib:zipkintrace:'+version){
+        changing true
+    }
+}
+signing {
+    required { hasProperty("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+//uploadArchives {
+//
+//    configuration = configurations.archives
+//    repositories.mavenDeployer {
+//        def config = rootProject.extensions.getByName("ext")
+//
+//        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+//        repository(url: config.mavenUrl) {//仓库地址
+//            authentication(userName: config.mavenUsername,//用户名
+//                    password: config.mavenPassword)//密码
+//        }
+//
+//        pom.project {
+//            name 'base-library'
+//            packaging 'aar'
+//            url  config.mavenUrl //仓库地址
+//            groupId = config.mavenGroupId
+//            artifactId = 'base'
+//            version = config.mavenVersion
+//        }
+//    }
+//}
