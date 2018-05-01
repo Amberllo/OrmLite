@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import com.xuanwu.apaas.libsample.store.*
+import com.xuanwu.apaas.ormlib.core.SqliteOrmLite
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -107,7 +108,7 @@ class MainActivity : BaseActivity() {
     @SuppressLint("MissingSuperCall")
     override fun onDestroy() {
         super.onDestroy()
-        XtionLibSetting.onDestory()
+        SqliteOrmLite.onDestory();
         System.exit(0)
     }
 }

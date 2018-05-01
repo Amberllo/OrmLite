@@ -30,26 +30,3 @@ signing {
     required { hasProperty("release") && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
-
-//uploadArchives {
-//
-//    configuration = configurations.archives
-//    repositories.mavenDeployer {
-//        def config = rootProject.extensions.getByName("ext")
-//
-//        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-//        repository(url: config.mavenUrl) {//仓库地址
-//            authentication(userName: config.mavenUsername,//用户名
-//                    password: config.mavenPassword)//密码
-//        }
-//
-//        pom.project {
-//            name 'ormlite-library'
-//            packaging 'aar'
-//            url  config.mavenUrl //仓库地址
-//            groupId = config.mavenGroupId
-//            artifactId = 'ormlite'
-//            version = config.mavenVersion
-//        }
-//    }
-//}
