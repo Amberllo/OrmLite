@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/OrmLite2.iml" filepath="$PROJECT_DIR$/OrmLite2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/xtion-lib-ormlite.iml" filepath="$PROJECT_DIR$/library/xtion-lib-ormlite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrmLite.iml" filepath="$PROJECT_DIR$/OrmLite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
+      <module fileurl="file://C:\Users\Administrator\OrmLite\library\xtion-lib-ormlite.iml" filepath="C:\Users\Administrator\OrmLite\library\xtion-lib-ormlite.iml" />
     </modules>
   </component>
 </project>
